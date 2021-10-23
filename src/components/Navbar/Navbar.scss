@@ -1,0 +1,41 @@
+.sidebar {
+  background: #383838;
+  flex: 0 0 20%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  line-height: 150%;
+}
+
+.sidebar_wrapper {
+  height: 100%;
+}
+
+.sidebar_nav {
+  list-style: none;    
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .3s ease;
+
+    &:hover {
+      color: #cacaca;
+    }
+  }
+
+  li:nth-child(6) {
+    margin-top: auto;
+  }
+}
+
+.sidebar_item {
+  a.active {
+    font-weight: 700;
+  }
+}
