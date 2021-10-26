@@ -8,12 +8,9 @@ const Profile = props => {
   return (
     <div class="main">
       <ProfileInfo/>
-      <Posts/>
+      <Posts ps={props.posts}/>
     </div>
   )
-}
-
-window.onload = () => {
 }
  
 export default Profile
