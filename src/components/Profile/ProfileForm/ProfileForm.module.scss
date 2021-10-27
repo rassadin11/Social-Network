@@ -1,0 +1,33 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.textarea {
+    margin: 10px 0;
+    background: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    color: #c9c9c9;
+
+    &::placeholder {
+        color: #c9c9c9;
+    }
+}
+
+.button {
+    background: transparent;
+    color: #c9c9c9;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 5px;
+    transition: all .3s ease;
+    cursor: pointer;
+
+    &:hover {
+        background: #fff;
+        color: #000;
+    }
+}

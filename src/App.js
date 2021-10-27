@@ -12,7 +12,7 @@ import Settings from './components/Settings/Settings';
 import './scss/App.scss';
 
 
-function App() {
+function App(props) {
   const forImage = 60;
   const speed = 0.05;
   let positionX = 0, positionY = 0;
