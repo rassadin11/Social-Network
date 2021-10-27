@@ -1,0 +1,41 @@
+.wrapper {
+    display: flex;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    margin: 15px 0;
+    padding: 10px 5px;
+    color: #cdcdcd;
+    cursor: pointer;
+    transition: background .3s ease;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        background: #383838;
+    }
+
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.infoTitle {
+    font-size: 22px;
+    color: inherit;
+}
+
+.infoText {
+    font-size: 16px;
+    color: inherit;
+}

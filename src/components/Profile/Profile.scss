@@ -22,7 +22,8 @@
     object-position: center;
     overflow: hidden;
     transform: translate(-2.5%);
-    object-position: -20px -100px
+    object-position: -20px -100px;
+    z-index: -1;
   }
 }
 
