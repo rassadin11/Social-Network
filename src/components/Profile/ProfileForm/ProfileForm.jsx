@@ -1,13 +1,14 @@
 import React from "react"
 import cl from './ProfileForm.module.scss'
-
+import { AddPostActionCreator } from '../../../redux/state'
+ 
 const ProfileForm = (props) => {
 
     let newPostElement = React.createRef()
 
     let addPost = () => {
         let text = newPostElement.current.value
-        props.dispatch({type: "ADD-POST", msg: text, rerenderEntireTree: props.rerenderEntireTree})
+        props.dispatch(AddPostActionCreator(text, props.rerenderEntireTree))
         newPostElement.current.value = ''
     }
 

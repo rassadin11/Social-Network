@@ -10,7 +10,8 @@
     padding: 10px;
     border-radius: 5px;
     color: #c9c9c9;
-
+    resize: none;
+    
     &::placeholder {
         color: #c9c9c9;
     }

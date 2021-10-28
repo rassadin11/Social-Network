@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    height: 60px;
+    margin: 10px 0;
+    width: 100%;
+    align-items: center;
+    
+    &:hover {
+        background: #2a2a2a;
+    }
+}
+
+.icon img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    margin-left: 10px;
+}

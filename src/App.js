@@ -1,6 +1,7 @@
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import Dialogs from './components/Dialogs/Dialogs';
+import PersonalDialog from './components/Dialogs/PersonalDialog/PersonalDialog';
 import Friends from './components/Friends/Friends';
 import Header from './components/Header/Header';
 import LogIn from './components/LogIn/LogIn';
@@ -11,7 +12,12 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import mouseMovement from './Parallax';
+
 import './scss/App.scss';
+
+const renderDialog = (obj, dialogs, dispatch, render) => {
+  return <PersonalDialog dialogs={dialogs} match={obj.match} dispatch={dispatch} render={render}/>
+}
 
 function App(props) {
   console.log(props)
@@ -28,6 +34,7 @@ function App(props) {
           <div className="main_content-wrapper">
             <Route component={() => <Profile dispatch={props.store.dispatch} posts={props.state.posts} rerenderEntireTree={props.rerenderEntireTree}/>} path='/profile' />
             <Route exact component={() => <Dialogs message={props.state.dialogs} />} path='/messages' />
+            <Route path="/messages/:id" component={(obj) => renderDialog(obj, props.state.dialogs, props.store.dispatch, props.rerenderEntireTree)}/> 
             <Route component={News} path='/news' />
             <Route component={Music} path='/music' />
             <Route component={() => <Friends friends={props.state.friends} />} path='/friends' />
