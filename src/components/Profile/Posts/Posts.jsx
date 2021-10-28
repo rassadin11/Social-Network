@@ -5,7 +5,7 @@ import cl from './Posts.module.scss';
 const Posts = ({ps}) => {
   return (
     <div className={ cl.posts }>
-        {ps.map(post => <Post key={post.id} title={post.title} ctx={post.ctx}/>)}
+        {ps.map(post => <Post key={post.id} name={post.name} ctx={post.ctx}/>)}
     </div>
   )
 }

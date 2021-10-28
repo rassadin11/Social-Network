@@ -11,10 +11,10 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import mouseMovement from './Parallax';
-import state from './redux/state';
 import './scss/App.scss';
 
 function App(props) {
+  console.log(props)
   return (
     <BrowserRouter>
       <div className="App" onMouseMove={e => {
@@ -26,11 +26,11 @@ function App(props) {
         <main className="main_content container">
           <Navbar />
           <div className="main_content-wrapper">
-            <Route component={() => <Profile posts={props.posts} />} path='/profile' />
-            <Route exact component={() => <Dialogs message={props.dialog} />} path='/messages' />
+            <Route component={() => <Profile dispatch={props.store.dispatch} posts={props.state.posts} rerenderEntireTree={props.rerenderEntireTree}/>} path='/profile' />
+            <Route exact component={() => <Dialogs message={props.state.dialogs} />} path='/messages' />
             <Route component={News} path='/news' />
             <Route component={Music} path='/music' />
-            <Route component={() => <Friends friends={state.friends} />} path='/friends' />
+            <Route component={() => <Friends friends={props.state.friends} />} path='/friends' />
             <Route component={Settings} path='/settings' />
             <Route component={LogIn} path='/login' />
             <Route component={LogOut} path='/logout' />

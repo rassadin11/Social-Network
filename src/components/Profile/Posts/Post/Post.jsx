@@ -9,7 +9,7 @@ const Post = props => {
           <img src={wolf} className={ cl.avatar } alt="#" />
         </div>
         <div className={ cl.content }>
-            <p className={ cl.title }>{props.title}</p>
+            <p className={ cl.title }>{props.name}</p>
             <p className={ cl.text }>{props.ctx}</p>
         </div>
     </div>

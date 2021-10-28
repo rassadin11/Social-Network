@@ -8,6 +8,7 @@ const Profile = props => {
   return (
     <div class="main">
       <ProfileInfo/>
+      <ProfileForm dispatch={props.dispatch} rerenderEntireTree={props.rerenderEntireTree}/>
       <Posts ps={props.posts}/>
     </div>
   )
