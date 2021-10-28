@@ -8,12 +8,7 @@ const Profile = props => {
   return (
     <div class="main">
       <ProfileInfo/>
-<<<<<<< HEAD
-      <ProfileForm/>
-      <Posts/>
-=======
       <Posts ps={props.posts}/>
->>>>>>> update
     </div>
   )
 }
