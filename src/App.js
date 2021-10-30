@@ -33,7 +33,7 @@ function App(props) {
           <Navbar />
           <div className="main_content-wrapper">
             <Route component={() => <Profile dispatch={props.store.dispatch} posts={props.state.posts} rerenderEntireTree={props.rerenderEntireTree}/>} path='/profile' />
-            <Route exact component={() => <Dialogs message={props.state.dialogs} />} path='/messages' />
+            <Route exact component={() => <Dialogs message={props.state.dialogs} dispatch={props.store.dispatch} rerenderEntireTree={props.rerenderEntireTree}/>} path='/messages' />
             <Route path="/messages/:id" component={(obj) => renderDialog(obj, props.state.dialogs, props.store.dispatch, props.rerenderEntireTree)}/> 
             <Route component={News} path='/news' />
             <Route component={Music} path='/music' />
