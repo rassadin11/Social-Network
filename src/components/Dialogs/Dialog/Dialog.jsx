@@ -1,7 +1,7 @@
 import React from "react"
 import cl from './Dialog.module.scss';
 import { NavLink } from "react-router-dom";
-import { removeDialog } from "../../../redux/store";
+import { removeDialog } from "../../../redux/redux-store";
 import wolf from './Images/wolf.jpg';
 
 const Dialog = (props) => {

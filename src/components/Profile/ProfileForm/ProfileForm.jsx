@@ -1,6 +1,5 @@
 import React from "react"
 import cl from './ProfileForm.module.scss'
-import { AddPostActionCreator } from '../../../redux/store'
  
 const ProfileForm = (props) => {
 
@@ -9,7 +8,7 @@ const ProfileForm = (props) => {
     let addPost = (e) => {
         e.preventDefault()
         let text = newPostElement.current.value
-        props.dispatch(AddPostActionCreator(text, props.rerenderEntireTree))
+        props.addNewPost(text)
         newPostElement.current.value = ''
     }
 

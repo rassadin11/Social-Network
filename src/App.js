@@ -1,7 +1,8 @@
+import { Provider } from 'react-redux';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import Dialogs from './components/Dialogs/Dialogs';
-import PersonalDialog from './components/Dialogs/PersonalDialog/PersonalDialog';
+import PersonalDialogContainer from './components/Dialogs/PersonalDialog/PersonalDialogContainer';
 import Friends from './components/Friends/Friends';
 import Header from './components/Header/Header';
 import LogIn from './components/LogIn/LogIn';
@@ -12,38 +13,40 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import mouseMovement from './Parallax';
+import {dialog} from './redux/redux-store'
 
 import './scss/App.scss';
 
-const renderDialog = (obj, dialogs, dispatch, render) => {
-  return <PersonalDialog dialogs={dialogs} match={obj.match} dispatch={dispatch} render={render}/>
+const renderDialog = (store, id) => {
+  return <PersonalDialogContainer store={store} match={id}/>
 }
 
 function App(props) {
-  console.log(props)
   return (
     <BrowserRouter>
-      <div className="App" onMouseMove={e => {
-        if (window.location.href.includes('/profile')) {
-          mouseMovement(e)
-        }
-      }}>
-        <Header />
-        <main className="main_content container">
-          <Navbar />
-          <div className="main_content-wrapper">
-            <Route component={() => <Profile dispatch={props.store.dispatch} posts={props.state.posts} rerenderEntireTree={props.rerenderEntireTree}/>} path='/profile' />
-            <Route exact component={() => <Dialogs message={props.state.dialogs} dispatch={props.store.dispatch} rerenderEntireTree={props.rerenderEntireTree}/>} path='/messages' />
-            <Route path="/messages/:id" component={(obj) => renderDialog(obj, props.state.dialogs, props.store.dispatch, props.rerenderEntireTree)}/> 
-            <Route component={News} path='/news' />
-            <Route component={Music} path='/music' />
-            <Route component={() => <Friends friends={props.state.friends} />} path='/friends' />
-            <Route component={Settings} path='/settings' />
-            <Route component={LogIn} path='/login' />
-            <Route component={LogOut} path='/logout' />
-          </div>
-        </main>
-      </div>
+      <Provider store={props.store}>
+        <div className="App" onMouseMove={e => {
+          if (window.location.href.includes('/profile')) {
+            mouseMovement(e)
+          }
+        }}>
+          <Header />
+          <main className="main_content container">
+            <Navbar />
+            <div className="main_content-wrapper">
+              <Route component={() => <Profile dispatch={props.store.dispatch} posts={props.state.posts} rerenderEntireTree={props.rerenderEntireTree} />} path='/profile' />
+              <Route exact component={() => <Dialogs message={props.state.dialogs} dispatch={props.store.dispatch} rerenderEntireTree={props.rerenderEntireTree} />} path='/messages' />
+              <Route path="/messages/:id" component={obj => renderDialog(props.store, obj.match.params.id, props.store.dispatch)} />
+              <Route component={News} path='/news' />
+              <Route component={Music} path='/music' />
+              <Route component={() => <Friends friends={props.state.friends} />} path='/friends' />
+              <Route component={Settings} path='/settings' />
+              <Route component={LogIn} path='/login' />
+              <Route component={LogOut} path='/logout' />
+            </div>
+          </main>
+        </div>
+      </Provider>
     </BrowserRouter>
   );
 }

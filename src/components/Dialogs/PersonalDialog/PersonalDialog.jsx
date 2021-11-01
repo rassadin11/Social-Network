@@ -3,10 +3,10 @@ import cl from './PersonalDialog.module.scss';
 import wolf from './images/wolf.jpg';
 import {ReactComponent as Plane} from './images/plane.svg';
 import PersonalMessage from "./PersonalMessage/PersonalMessage";
-import {AddMessageToDialog} from "../../../redux/store";
+import {AddMessageToDialog} from "../../../redux/redux-store";
 
 const PersonalDialog = (props) => {
-    let activeDialog = props.dialogs.filter(dialog => dialog.id === +props.match.params.id)[0]
+    let activeDialog = props.dialogs.filter(dialog => dialog.id === props.match)[0]
     let textareaRef = React.createRef()
 
     useEffect(() => {
@@ -22,15 +22,8 @@ const PersonalDialog = (props) => {
 
         if (event.keyCode === 13 && !event.shiftKey) {
             event.preventDefault()
-            console.log(AddMessageToDialog(textareaRef.current.value, activeDialog.id, props.render))
-            props.dispatch(AddMessageToDialog(textareaRef.current.value, activeDialog.id, props.render))
+            props.updateNewPostText(event, textareaRef.current.value, activeDialog.id, props.render)
             event.target.focus()
-        }
-    }
-
-    const addNewMsg = () => {
-        if (textareaRef.current.value.length) {
-            props.dispatch(AddMessageToDialog(textareaRef.current.value, activeDialog.id, props.render))
         }
     }
 
@@ -45,7 +38,7 @@ const PersonalDialog = (props) => {
             </div>
             <div className={ cl.addMessage }>
                 <textarea autoFocus onKeyDown={e => addNewMessage(e)} ref={textareaRef} className={ cl.textarea } placeholder="Введите сообщение"></textarea>
-                <Plane onClick={addNewMsg} className={ cl.svgIcon }/>
+                <Plane onClick={() => props.addNewMsg(textareaRef.current.value, activeDialog.id, props.render)} className={ cl.svgIcon }/>
             </div>
         </div>
     )
