@@ -53,10 +53,6 @@ export const DialogsReducer = (state = initialState, action) => {
             }
             
             return state
-        case "REMOVE-DIALOG":
-            state = action.newArray
-            
-            return state
         default: 
             return state
     }

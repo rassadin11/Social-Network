@@ -10,7 +10,7 @@ const Friend = (props) => {
             </div>
             <div>
                 <p className={ cl.infoTitle }>{props.friend.name}</p>
-                <p className={ cl.infoText }>{props.friend.info}</p>
+                <p className={ cl.infoText }>{props.friend.country} / {props.friend.city}</p>
             </div>
         </div>
     )

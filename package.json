@@ -31,18 +31,11 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      "cover 99.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    "last 1 version",
+    "cover 99.5%",
+    "IE 10"
+  ],
   "devDependencies": {
     "css-loader": "^6.4.0",
     "sass-loader": "^12.2.0",

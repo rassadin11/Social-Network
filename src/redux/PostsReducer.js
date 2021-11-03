@@ -17,7 +17,7 @@ export const PostsReducer = (state = initialState, action) => {
                 ctx: action.msg,
                 likesCount: 0,
             };
-    
+            
             state.push(newPost)
             
             return state

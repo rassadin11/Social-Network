@@ -1,4 +1,3 @@
-import React, { useEffect } from "react"
 import PersonalDialog from './PersonalDialog';
 import { AddMessageToDialog } from "../../../redux/redux-store";
 import { connect } from "react-redux";
@@ -12,7 +11,7 @@ let mapStateToProps = (state, props) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        updateNewPostText: (event, text, id, render) => {
+        updateNewPostText: (event, text, id) => {
             if (!text.length && event.keyCode === 13) {
                 event.preventDefault()
                 return
@@ -20,13 +19,13 @@ let mapDispatchToProps = (dispatch) => {
 
             if (event.keyCode === 13 && !event.shiftKey) {
                 event.preventDefault()
-                dispatch(AddMessageToDialog(text, id, render))
+                dispatch(AddMessageToDialog(text, id))
                 event.target.focus()
             }
         },
-        addNewMsg: (text, id, render) => {
+        addNewMsg: (text, id) => {
             if (text.length) {
-                dispatch(AddMessageToDialog(text, id, render))
+                dispatch(AddMessageToDialog(text, id))
             }
         }
     }

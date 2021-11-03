@@ -22,7 +22,7 @@ const PersonalDialog = (props) => {
 
         if (event.keyCode === 13 && !event.shiftKey) {
             event.preventDefault()
-            props.updateNewPostText(event, textareaRef.current.value, activeDialog.id, props.render)
+            props.updateNewPostText(event, textareaRef.current.value, activeDialog.id)
             event.target.focus()
         }
     }
@@ -38,7 +38,7 @@ const PersonalDialog = (props) => {
             </div>
             <div className={ cl.addMessage }>
                 <textarea autoFocus onKeyDown={e => addNewMessage(e)} ref={textareaRef} className={ cl.textarea } placeholder="Введите сообщение"></textarea>
-                <Plane onClick={() => props.addNewMsg(textareaRef.current.value, activeDialog.id, props.render)} className={ cl.svgIcon }/>
+                <Plane onClick={() => props.addNewMsg(textareaRef.current.value, activeDialog.id)} className={ cl.svgIcon }/>
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
+import AllUsersContainer from './components/AllUsers/AllUsersContainer';
 import Dialogs from './components/Dialogs/Dialogs';
 import PersonalDialogContainer from './components/Dialogs/PersonalDialog/PersonalDialogContainer';
 import Friends from './components/Friends/Friends';
@@ -13,7 +14,6 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import mouseMovement from './Parallax';
-import {dialog} from './redux/redux-store'
 
 import './scss/App.scss';
 
@@ -39,6 +39,7 @@ function App(props) {
               <Route path="/messages/:id" component={obj => renderDialog(props.store, obj.match.params.id, props.store.dispatch)} />
               <Route component={News} path='/news' />
               <Route component={Music} path='/music' />
+              <Route component={AllUsersContainer} path='/users' />
               <Route component={() => <Friends friends={props.state.friends} />} path='/friends' />
               <Route component={Settings} path='/settings' />
               <Route component={LogIn} path='/login' />

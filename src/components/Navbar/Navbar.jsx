@@ -11,6 +11,7 @@ const Navbar = props => {
           <li className="sidebar_item"><NavLink to="/messages">Messages</NavLink></li>
           <li className="sidebar_item"><NavLink to="/news">News</NavLink></li>
           <li className="sidebar_item"><NavLink to="/friends">Your friends</NavLink></li>
+          <li className="sidebar_item"><NavLink to="/users">All users</NavLink></li>
           <li className="sidebar_item"><NavLink to="/music">Music</NavLink></li>
           <li className="sidebar_item"><NavLink to="/settings">Settings</NavLink></li>
           <li className="sidebar_item"><NavLink to="/login">LogIn</NavLink></li>

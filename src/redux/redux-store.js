@@ -2,6 +2,7 @@ import { combineReducers, createStore } from "redux";
 import { PostsReducer } from './PostsReducer'
 import { DialogsReducer } from './DialogsReducer'
 import { FriendsReducer } from './FriendsReducer'
+import { AllUsersReducer } from "./AllUsersReducer";
 
 export const AddPostActionCreator = (text) => ({
     type: "ADD-POST",
@@ -26,10 +27,21 @@ export const dialog = (id) => ({
     activeDialog: id
 })
 
+export const removeFriend = (id) => ({
+    type: "REMOVE-FRIEND",
+    id: id
+})
+
+export const addFriend = (user) => ({
+    type: "ADD-FRIEND",
+    user: user
+})
+
 let reducers = combineReducers({
     posts: PostsReducer,
     dialogs: DialogsReducer,
-    friends: FriendsReducer
+    friends: FriendsReducer,
+    users: AllUsersReducer,
 })
 
 let store = createStore(reducers);

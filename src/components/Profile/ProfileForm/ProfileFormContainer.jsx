@@ -1,4 +1,3 @@
-import React from "react"
 import { AddPostActionCreator } from '../../../redux/redux-store'
 import ProfileForm from './ProfileForm'
 import { connect } from "react-redux";
