@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import AllUsers from "./AllUsers";
-import {removeFriend, addFriend} from '../../redux/redux-store'
+import {removeFriend, addFriend, setUsers} from '../../redux/redux-store'
 
 let mapStatetoProps = (state) => {
     return {
@@ -17,6 +17,10 @@ let mapDispatchToProps = (dispatch) => {
 
         mapAddFriend: (user) => {
             dispatch(addFriend(user))
+        },
+
+        setUsers: (users) => {
+            dispatch(setUsers(users))
         }
     }
 }

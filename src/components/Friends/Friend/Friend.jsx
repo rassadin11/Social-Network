@@ -5,12 +5,12 @@ import icon from './images/manchester.jpg'
 const Friend = (props) => {
     return (
         <div className={cl.wrapper}>
-            <div>
-                <img src={icon} className={cl.avatar} alt="" />
+            <div className={ cl.imageWrapper }>
+                <img src={props.friend.photos.large !== null ? props.friend.photos.large : icon} className={cl.avatar} alt="" />
             </div>
-            <div>
+            <div className={ cl.textWrapper }>
                 <p className={ cl.infoTitle }>{props.friend.name}</p>
-                <p className={ cl.infoText }>{props.friend.country} / {props.friend.city}</p>
+                {/* <p className={ cl.infoText }>{props.friend.location.country} / {props.friend.location.city}</p> */}
             </div>
         </div>
     )

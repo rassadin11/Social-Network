@@ -37,11 +37,16 @@ export const addFriend = (user) => ({
     user: user
 })
 
+export const setUsers = users => ({
+    type: "SET_USERS",
+    users: users
+})
+
 let reducers = combineReducers({
     posts: PostsReducer,
     dialogs: DialogsReducer,
     friends: FriendsReducer,
-    users: AllUsersReducer,
+    users: AllUsersReducer
 })
 
 let store = createStore(reducers);

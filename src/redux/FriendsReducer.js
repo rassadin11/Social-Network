@@ -1,7 +1,4 @@
-const initialState = [
-    { id: 2, name: 'Arina', country: 'Russia', city: 'Rostov-on-Done' },
-    { id: 3, name: 'Vika', country: 'Russia', city: 'Moscow' },
-]
+const initialState = []
 
 export const FriendsReducer = (state = initialState, action) => {
     switch (action.type) {

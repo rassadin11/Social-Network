@@ -10,3 +10,22 @@
 .usersFlex {
     display: flex;
 }
+
+.links {
+    display: flex;
+    margin-top: 20px;
+    padding-bottom: 20px;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        
+        &:not(:first-child) {
+            padding: 0 0 0 10px;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
