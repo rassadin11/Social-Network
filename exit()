@@ -1,0 +1,48 @@
+[33mcommit 8d56fe4fe6b4e82a17e74f37f2f4521f4b27bd7f[m
+Author: Artyom Rassadin <58170052+rassadin11@users.noreply.github.com>
+Date:   Wed Nov 3 11:05:06 2021 +0300
+
+    New panel (all users)
+
+ delete mode 100644 src/redux/DialogReducer.js
+
+[33mcommit 67ad268171d793648ed3dc96b472b296afb84687[m
+Author: Artyom Rassadin <58170052+rassadin11@users.noreply.github.com>
+Date:   Sat Oct 30 16:08:13 2021 +0300
+
+    Use redux
+
+ delete mode 100644 src/redux/state.js
+
+[33mcommit 6e719fa7d6547636bbb91d375feaf1331b7d19d1[m
+Author: Artyom Rassadin <58170052+rassadin11@users.noreply.github.com>
+Date:   Thu Oct 28 13:45:00 2021 +0300
+
+    dispatch and action
+
+ delete mode 100644 src/render.js
+
+[33mcommit 9e4f0d503eb776cb37df836c69a98179491259ca[m[33m ([m[1;31morigin/update[m[33m)[m
+Author: Artyom Rassadin <58170052+rassadin11@users.noreply.github.com>
+Date:   Tue Oct 26 23:27:48 2021 +0300
+
+    friends panel
+
+ delete mode 100644 test/.gitignore
+ delete mode 100644 test/README.md
+ delete mode 100644 test/package-lock.json
+ delete mode 100644 test/package.json
+ delete mode 100644 test/public/favicon.ico
+ delete mode 100644 test/public/index.html
+ delete mode 100644 test/public/logo192.png
+ delete mode 100644 test/public/logo512.png
+ delete mode 100644 test/public/manifest.json
+ delete mode 100644 test/public/robots.txt
+ delete mode 100644 test/src/App.css
+ delete mode 100644 test/src/App.js
+ delete mode 100644 test/src/App.test.js
+ delete mode 100644 test/src/index.css
+ delete mode 100644 test/src/index.js
+ delete mode 100644 test/src/logo.svg
+ delete mode 100644 test/src/reportWebVitals.js
+ delete mode 100644 test/src/setupTests.js

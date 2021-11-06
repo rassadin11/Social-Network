@@ -1,5 +1,5 @@
 import React from "react"
-import cl from './Settings.module.scss';
+// import cl from './Settings.module.scss';
 
 const Settings = (props) => {
   return (

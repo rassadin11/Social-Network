@@ -2,7 +2,6 @@
     display: flex;
     color: #cdcdcd;
     transition: all .3s ease;
-    cursor: pointer;
 
     &:hover {
         background: #383838
@@ -22,6 +21,10 @@
     padding: 10px;
     border-radius: 5px;
     width: 100%;
+
+    a {
+        height: 100%;
+    }
 }
 
 .userWrapper {

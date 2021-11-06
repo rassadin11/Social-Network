@@ -12,9 +12,9 @@ import Music from './components/Music/Music';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
+import UserProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import mouseMovement from './Parallax';
-
 import './scss/App.scss';
 
 const renderDialog = (store, id) => {
@@ -34,8 +34,9 @@ function App(props) {
           <main className="main_content container">
             <Navbar />
             <div className="main_content-wrapper">
-              <Route component={() => <Profile dispatch={props.store.dispatch} posts={props.state.posts} rerenderEntireTree={props.rerenderEntireTree} />} path='/profile' />
-              <Route exact component={() => <Dialogs message={props.state.dialogs} dispatch={props.store.dispatch} rerenderEntireTree={props.rerenderEntireTree} />} path='/messages' />
+              <Route exact component={() => <Profile dispatch={props.store.dispatch} posts={props.state.posts}/>} path='/profile' />
+              <Route component={obj => <UserProfileContainer match={obj.match.params.id}/>} path='/profile/:id' />
+              <Route exact component={() => <Dialogs message={props.state.dialogs} dispatch={props.store.dispatch}/>} path='/messages' />
               <Route path="/messages/:id" component={obj => renderDialog(props.store, obj.match.params.id, props.store.dispatch)} />
               <Route component={News} path='/news' />
               <Route component={Music} path='/music' />

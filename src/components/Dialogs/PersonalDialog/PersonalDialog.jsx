@@ -3,7 +3,6 @@ import cl from './PersonalDialog.module.scss';
 import wolf from './images/wolf.jpg';
 import {ReactComponent as Plane} from './images/plane.svg';
 import PersonalMessage from "./PersonalMessage/PersonalMessage";
-import {AddMessageToDialog} from "../../../redux/redux-store";
 
 const PersonalDialog = (props) => {
     let activeDialog = props.dialogs.filter(dialog => dialog.id === props.match)[0]

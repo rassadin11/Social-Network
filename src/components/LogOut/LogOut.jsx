@@ -1,5 +1,5 @@
 import React from "react"
-import cl from './LogOut.module.scss';
+// import cl from './LogOut.module.scss';
 
 const LogOut = (props) => {
   return (

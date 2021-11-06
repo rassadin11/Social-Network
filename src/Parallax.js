@@ -9,16 +9,18 @@ function mouseMovement(e) {
     main = document.querySelector('.main')
     image = document.querySelector(".header-main__picture")
 
-    const parallaxWidth = main.offsetWidth
-    const parallaxHeight = main.offsetHeight
-
-    const coordX = e.pageX - parallaxWidth / 2
-    const coordY = e.pageY - parallaxHeight / 2
-
-    coordXprocent = coordX / parallaxWidth * 100
-    coordYprocent = coordY / parallaxHeight * 100
-
-    setMouseParallaxStyle()
+    if (image) {
+        const parallaxWidth = main.offsetWidth
+        const parallaxHeight = main.offsetHeight
+    
+        const coordX = e.pageX - parallaxWidth / 2
+        const coordY = e.pageY - parallaxHeight / 2
+    
+        coordXprocent = coordX / parallaxWidth * 100
+        coordYprocent = coordY / parallaxHeight * 100
+    
+        setMouseParallaxStyle()
+    }
 }
 
 function setMouseParallaxStyle() {
