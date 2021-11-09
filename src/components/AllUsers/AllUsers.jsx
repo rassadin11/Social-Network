@@ -28,6 +28,8 @@ const AllUsers = (props) => {
             fetching={props.isFetching}
             users={props.users}
             friends={props.friends}
+            mapAddFriend={props.mapAddFriend}
+            mapRemoveFriend={props.mapRemoveFriend}
             totalUsersCount={props.totalUsersCount}
             pageSize={props.pageSize}
             activePage={props.activePage}

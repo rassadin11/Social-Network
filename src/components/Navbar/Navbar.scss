@@ -6,6 +6,10 @@
   flex-direction: column;
   height: 80vh;
   line-height: 150%;
+
+  @media (max-width: 767.98px) {
+    display: none;
+  }
 }
 
 .sidebar_wrapper {

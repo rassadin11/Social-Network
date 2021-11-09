@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Provider } from 'react-redux';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
@@ -12,16 +13,23 @@ import Music from './components/Music/Music';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
-import UserProfileContainer from './components/Profile/ProfileContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import mouseMovement from './Parallax';
 import './scss/App.scss';
 
-const renderDialog = (store, id) => {
-  return <PersonalDialogContainer store={store} match={id}/>
-}
-
 function App(props) {
+
+  let [burger, setBurger] = useState(false)
+  
+  const renderDialog = (store, id) => {
+    return <PersonalDialogContainer store={store} match={id}/>
+  }
+
+  const renderProfile = (dispatch, posts) => {
+    return <Profile dispatch={dispatch} posts={posts}/>
+  }
+
   return (
     <BrowserRouter>
       <Provider store={props.store}>
@@ -30,18 +38,22 @@ function App(props) {
             mouseMovement(e)
           }
         }}>
-          <Header />
+          <Header burger={burger} setBurger={setBurger}/>
           <main className="main_content container">
             <Navbar />
             <div className="main_content-wrapper">
-              <Route exact component={() => <Profile dispatch={props.store.dispatch} posts={props.state.posts}/>} path='/profile' />
-              <Route component={obj => <UserProfileContainer match={obj.match.params.id}/>} path='/profile/:id' />
-              <Route exact component={() => <Dialogs message={props.state.dialogs} dispatch={props.store.dispatch}/>} path='/messages' />
-              <Route path="/messages/:id" component={obj => renderDialog(props.store, obj.match.params.id, props.store.dispatch)} />
+              <Route exact render={obj => {
+                return <ProfileContainer match="2"/>
+              }} path='/profile/' />
+              <Route render={obj => {
+                return <ProfileContainer match={obj.match.params.id}/>
+              }} path='/profile/:id' />
+              <Route exact render={() => <Dialogs message={props.state.dialogs} dispatch={props.store.dispatch}/>} path='/messages' />
+              <Route path="/messages/:id" render={obj => renderDialog(props.store, obj.match.params.id, props.store.dispatch)} />
               <Route component={News} path='/news' />
               <Route component={Music} path='/music' />
               <Route component={AllUsersContainer} path='/users' />
-              <Route component={() => <Friends friends={props.state.friends} />} path='/friends' />
+              <Route render={() => <Friends friends={props.state.friends} />} path='/friends' />
               <Route component={Settings} path='/settings' />
               <Route component={LogIn} path='/login' />
               <Route component={LogOut} path='/logout' />

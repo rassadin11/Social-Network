@@ -12,17 +12,15 @@ let mapStateToProps = (state, props) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         updateNewPostText: (event, text, id) => {
-            if (!text.length && event.keyCode === 13) {
+            if (!text.length) {
                 event.preventDefault()
                 return
             };
-
-            if (event.keyCode === 13 && !event.shiftKey) {
-                event.preventDefault()
-                dispatch(AddMessageToDialog(text, id))
-                event.target.focus()
-            }
+            
+            dispatch(AddMessageToDialog(text, id))
+            event.target.focus()
         },
+        
         addNewMsg: (text, id) => {
             if (text.length) {
                 dispatch(AddMessageToDialog(text, id))

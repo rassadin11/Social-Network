@@ -63,4 +63,22 @@
         color: #fff;
         letter-spacing: 1;
     }
+
+    @media (max-width: 767.98px) {
+        display: none;
+    }
+}
+
+.addFriendSmallSize {
+    background: transparent;
+    border: none;
+    color: inherit;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+    font-weight: 700;
+    
+    @media (min-width: 767.98px) {
+        display: none;
+    }
 }

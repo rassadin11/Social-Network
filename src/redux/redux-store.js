@@ -44,12 +44,7 @@ export const isFetching = (fetch) => {
   };
 };
 
-export const changeProfile = (profile) => {
-  return {
-    type: "CHANGE_PROFILE",
-    profile
-  }
-}
+export const setUserProfile = (profile) => ({type: "CHANGE_PROFILE", profile})
 
 export const setUsers = (users, pageSize, totalUsersCount, activePage) => {
   return {

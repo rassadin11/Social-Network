@@ -1,0 +1,35 @@
+.wrapper {
+    display: flex;
+    color: #c9c9c9;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 555px) {
+        flex-direction: column;
+    }
+}
+
+.title {
+    font-size: 21px;
+}
+
+.paragraph {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical; /* Вертикальная ориентация */
+    -moz-box-orient: vertical; /* Вертикальная ориентация */
+    overflow: hidden;
+}
+
+.icon {
+    max-width: 300px;
+    min-width: 250px;
+    padding-right: 10px;
+
+    @media (max-width: 555px) {
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+}

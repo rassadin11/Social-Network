@@ -1,0 +1,15 @@
+.links {
+    flex: 0 1 49%;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+}
+
+.links.active {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+}

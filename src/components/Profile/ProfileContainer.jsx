@@ -1,35 +1,24 @@
-import axios from "axios";
-import React, {useEffect} from "react";
-import { connect } from "react-redux";
-import { changeProfile } from "../../redux/redux-store";
+import React, { useEffect } from "react";
 import Profile from "./Profile";
+import * as axios from "axios";
+import { connect } from "react-redux";
+import { setUserProfile } from "../../redux/redux-store";
 
-const ProfileContainer = (props) => {
-    useEffect(() => {
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/profile/${props.match}`
-            )
-            .then((response) => response.data);
-        
-        console.log('ok')
+let ProfileContainer = (props) => {
+    
+    useEffect(async () => {
+        await axios
+            .get(`https://social-network.samuraijs.com/api/1.0/profile/${props.match}`)
+            .then((response) => {
+                props.setUserProfile(response.data);
+            });
     }, []);
-
-    return (
-        <Profile/>
-    )
+    
+    return <Profile {...props} />;
 };
 
 let mapStateToProps = (state) => ({
-    profile: state.users.profile
-})
+    profile: state.users.profile,
+});
 
-let mapDispatchToProps = (dispatch) => ({
-    changeProfile: (profile) => {
-        dispatch(changeProfile(profile))
-    }
-})
-
-const UserProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileContainer)
-
-export default UserProfileContainer;
+export default connect(mapStateToProps, { setUserProfile })(ProfileContainer);

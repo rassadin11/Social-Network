@@ -4,6 +4,7 @@ import cl from "./AllUsers.module.scss";
 import Preloader from "../../Preloader/Preloader";
 
 const RenderAllUsers = (props) => {
+
     const changeActivePage = (currentPage) => {
         if (+currentPage !== +props.activePage) {
             props.changePage(+currentPage);
@@ -62,9 +63,10 @@ const RenderAllUsers = (props) => {
                     <div className={cl.links}>
                         {pages.map((page) =>
                             Array.isArray(page) ? (
-                                <span>{page}</span>
+                                <span key={page}>{page}</span>
                             ) : (
                                 <span
+                                    key={page}
                                     onClick={(e) =>
                                         changeActivePage(e.target.innerHTML)
                                     }
@@ -83,8 +85,6 @@ const RenderAllUsers = (props) => {
                     <Preloader />
                 </div>
             )}
-
-            <div className={cl.filters}>FILTERS</div>
         </div>
     );
 };

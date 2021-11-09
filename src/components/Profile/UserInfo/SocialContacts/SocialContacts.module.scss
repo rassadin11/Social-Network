@@ -1,0 +1,16 @@
+.wrapper {
+    display: block;
+    color: #c9c9c9;
+}
+
+.socialNet {
+    a {
+        text-decoration: none;
+        color: inherit;
+        word-break: break-word;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

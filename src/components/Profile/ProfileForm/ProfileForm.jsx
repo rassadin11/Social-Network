@@ -14,7 +14,7 @@ const ProfileForm = (props) => {
 
     return (
         <form action="#" className={ cl.form }>
-            <textarea ref={newPostElement} cols="20" rows="4" placeholder="Введите сообщение" className={ cl.textarea }></textarea>
+            <textarea ref={newPostElement} cols="20" rows="4" placeholder="Оставьте сообщение в профиле пользователя" className={ cl.textarea }></textarea>
             <button onClick={e => addPost(e) } className={ cl.button }>Добавить сообщение</button>
         </form>
     )

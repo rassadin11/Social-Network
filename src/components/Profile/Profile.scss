@@ -1,6 +1,10 @@
 .main_content {
   padding: 0 15px;
   display: flex;
+
+  @media (max-width: 767.98px) {
+    padding: 0
+  }
 }
 
 .main {

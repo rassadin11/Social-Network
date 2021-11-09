@@ -13,7 +13,6 @@ const PersonalDialog = (props) => {
     })
 
     const addNewMessage = (event) => {
-        
         if (!textareaRef.current.value.length && event.keyCode === 13) {
             event.preventDefault()
             return
@@ -23,6 +22,7 @@ const PersonalDialog = (props) => {
             event.preventDefault()
             props.updateNewPostText(event, textareaRef.current.value, activeDialog.id)
             event.target.focus()
+            textareaRef.current.value = ''
         }
     }
 

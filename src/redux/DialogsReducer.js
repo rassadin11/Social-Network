@@ -49,10 +49,11 @@ export const DialogsReducer = (state = initialState, action) => {
             for (let item of state) {
                 if (item.id === action.activeID) {
                     item.all_messages.push({author: action.author, text_message: action.text_message, timestamp: Date.now()})
+                    return [...state]
                 }
             }
             
-            return state
+            return [...state]
         default: 
             return state
     }
