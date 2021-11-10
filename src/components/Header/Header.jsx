@@ -4,7 +4,6 @@ import "./Header.scss";
 import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
-
   useEffect(() => {
     props.setBurger(false)
   }, [])
@@ -15,6 +14,10 @@ const Header = (props) => {
                 <NavLink to="/profile">
                     <img className="header__picture" src={avatar} alt="" />
                 </NavLink>
+                {props.resultCode === 0 ? <div className="user__info">
+                    <p className="info-user__login">{props.login}</p>
+                    <p className="info-user__email">{props.email}</p>
+                </div> : 'U are not registered'}
                 <nav className="header__menu">
                     <div className={props.burger ? "icon-menu active" : "icon-menu"} onClick={() => props.setBurger(!props.burger)}>
                         <span></span>

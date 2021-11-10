@@ -3,22 +3,21 @@ let initialState = {
     pageSize: 10,
     totalUsersCount: 100,
     activePage: 1,
-    isFetching: false,
     profile: null,
+    isFetching: false,
+    followingInProgress: false,
 };
 
 export const AllUsersReducer = (state = initialState, action) => {
     switch (action.type) {
         case "SET_USERS":
-            state = {
+            return {
                 ...state,
                 users: action.users,
                 pageSize: action.pageSize,
                 totalUsersCount: action.totalUsersCount,
                 activePage: action.activePage,
             };
-
-            return state;
 
         case "CHANGE_PAGE":
             return {
@@ -42,6 +41,12 @@ export const AllUsersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: action.profile
+            }
+        
+        case "FOLLOWING-IN-PROGRESS":
+            return {
+                ...state, 
+                followingInProgress: action.followingInProgress,
             }
         default:
             return state;

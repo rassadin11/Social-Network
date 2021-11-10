@@ -5,8 +5,11 @@ import {
   addFriend,
   setUsers,
   changePage,
-  setTotalCountAC,
+  setTotalCount,
   isFetching,
+  followInProgress,
+  getUsersThunkCreator,
+  removeFollow
 } from "../../redux/redux-store";
 
 let mapStatetoProps = (state) => {
@@ -16,41 +19,24 @@ let mapStatetoProps = (state) => {
     pageSize: state.users.pageSize,
     totalUsersCount: state.users.totalUsersCount,
     activePage: state.users.activePage,
-    isFetching: state.users.isFetching,
-  };
-};
-
-let mapDispatchToProps = (dispatch) => {
-  return {
-    mapRemoveFriend: (id) => {
-      dispatch(removeFriend(id));
-    },
-
-    mapAddFriend: (user) => {
-      dispatch(addFriend(user));
-    },
-
-    setUsers: (users, pageSize, totalUsersCount, activePage) => {
-      dispatch(setUsers(users, pageSize, totalUsersCount, activePage));
-    },
-
-    changePage: (activePage) => {
-      dispatch(changePage(activePage));
-    },
-
-    setTotalCount: (totalCount) => {
-      dispatch(setTotalCountAC(totalCount));
-    },
-
-    isFetch: (fetch) => {
-      dispatch(isFetching(fetch));
-    },
+    isFetch: state.users.isFetching,
+    followingInProgress: state.users.followingInProgress
   };
 };
 
 const AllUsersContainer = connect(
   mapStatetoProps,
-  mapDispatchToProps
+  {
+    removeFriend,
+    addFriend,
+    setUsers,
+    changePage,
+    setTotalCount,
+    isFetching,
+    followInProgress,
+    getUsersThunkCreator,
+    removeFollow
+  }
 )(AllUsers);
 
 export default AllUsersContainer;

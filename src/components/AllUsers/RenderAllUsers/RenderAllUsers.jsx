@@ -4,55 +4,21 @@ import cl from "./AllUsers.module.scss";
 import Preloader from "../../Preloader/Preloader";
 
 const RenderAllUsers = (props) => {
-
     const changeActivePage = (currentPage) => {
         if (+currentPage !== +props.activePage) {
             props.changePage(+currentPage);
         }
     };
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-
-    if (pagesCount > 10) {
-        if (props.activePage > 2 && props.activePage < pagesCount - 1) {
-            pages.push(1);
-            pages.push([".", ".", "."]);
-            pages.push(props.activePage - 1);
-            pages.push(props.activePage);
-            pages.push(props.activePage + 1);
-            pages.push([".", ".", "."]);
-            pages.push(pagesCount);
-        } else if (props.activePage <= 2) {
-            pages.push(1);
-            pages.push(2);
-            pages.push(3);
-            pages.push([".", ".", "."]);
-            pages.push(pagesCount - 2);
-            pages.push(pagesCount - 1);
-            pages.push(pagesCount);
-        } else if (
-            props.activePage >= pagesCount - 2 &&
-            props.activePage <= pagesCount
-        ) {
-            pages.push(1);
-            pages.push([".", ".", "."]);
-            pages.push(pagesCount - 2);
-            pages.push(pagesCount - 1);
-            pages.push(pagesCount);
-        }
-    } else {
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i);
-        }
-    }
-
     return (
         <div className={cl.usersFlex}>
-            {props.fetching === false ? (
+            {props.fetch === false ? (
                 <div className={cl.users}>
                     {props.users.map((user) => (
                         <SingleUser
+                            removeFollow={props.removeFollow}
+                            followingInProgress={props.followingInProgress} // variable
+                            followInProgress={props.followInProgress} // method
                             key={user.id}
                             user={user}
                             friends={props.friends}
@@ -61,7 +27,7 @@ const RenderAllUsers = (props) => {
                         />
                     ))}
                     <div className={cl.links}>
-                        {pages.map((page) =>
+                        {props.pages.map((page) =>
                             Array.isArray(page) ? (
                                 <span key={page}>{page}</span>
                             ) : (

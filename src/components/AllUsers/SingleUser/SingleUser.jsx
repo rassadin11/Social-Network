@@ -2,10 +2,11 @@ import React from "react";
 import cl from "./SingleUser.module.scss";
 import manchester from "../images/defaultIcon.png";
 import { NavLink } from "react-router-dom";
+import { followAPI } from "../../../api/api";
 
 const SingleUser = (props) => {
     const removeFriend = (id) => {
-        props.mapRemoveFriend(id);
+        props.mapRemoveFriend(+id);
     };
 
     const addFriend = (user) => {
@@ -13,7 +14,7 @@ const SingleUser = (props) => {
     };
 
     return (
-        <div className={cl.mainContent}>
+        <div className={cl.mainContent} key={props.user.id}>
             <div className={cl.user}>
                 <div className={cl.userWrapper}>
                     <NavLink to={"/profile/" + props.user.id}>
@@ -30,39 +31,65 @@ const SingleUser = (props) => {
                 </div>
                 <div className={cl.userInfo}>
                     <p className={cl.name}>{props.user.name}</p>
-                    {props.friends.filter(
-                        (friend) => friend.id === props.user.id
-                    ).length > 0 ? (
-                        <button
-                            onClick={() => removeFriend(props.user.id)}
-                            className={cl.addFriendSmallSize}
-                        >
+                    {props.user.followed ? (
+                        <button disabled={props.followingInProgress} onClick={() => {
+                            props.removeFollow(props.user)
+                        }}
+                            className={cl.addFriend}>
                             Удалить из друзей
                         </button>
-                    ) : (
-                        <button
-                            onClick={() => addFriend(props.user)}
-                            className={cl.addFriendSmallSize}
-                        >
-                            Добавить в друзья
-                        </button>
+                    ) : (<button disabled={props.followingInProgress}
+                        onClick={async () => {
+                            props.followInProgress(true)
+
+                            await followAPI.addFriend(props.user.id).then((data) => {
+                                if (!data.resultCode) {
+                                    addFriend(props.user);
+                                    props.user.followed = !props.user.followed
+                                }
+                            });
+
+                            props.followInProgress(false)
+                        }}
+                        className={cl.addFriend}>
+                        Добавить в друзья
+                    </button>
                     )}
                 </div>
                 <div className={cl.serverInfo}>
                     <p className={cl.dateCreated}>{props.user.date_created}</p>
-                    {props.friends.filter(
-                        (friend) => friend.id === props.user.id
-                    ).length > 0 ? (
+                    {props.user.followed ? (
                         <button
-                            onClick={() => removeFriend(props.user.id)}
-                            className={cl.addFriend}
+                            onClick={() => {
+                                props.followInProgress(true)
+
+                                followAPI.deleteFriend(props.user.id).then((data) => {
+                                    if (!data.resultCode) {
+                                        removeFriend(props.user.id);
+                                    }
+                                });
+
+                                props.followInProgress(false)
+                            }}
+
+                            className={cl.addFriendSmallSize}
                         >
                             Удалить из друзей
                         </button>
                     ) : (
                         <button
-                            onClick={() => addFriend(props.user)}
-                            className={cl.addFriend}
+                            onClick={() => {
+                                props.followInProgress(true)
+
+                                followAPI.addFriend(props.user).then((data) => {
+                                    if (!data.resultCode) {
+                                        addFriend(props.user);
+                                    }
+                                });
+
+                                props.followInProgress(false)
+                            }}
+                            className={cl.addFriendSmallSize}
                         >
                             Добавить в друзья
                         </button>
