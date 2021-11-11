@@ -4,7 +4,7 @@ import { DialogsReducer } from "./DialogsReducer";
 import { FriendsReducer } from "./FriendsReducer";
 import { AllUsersReducer } from "./AllUsersReducer";
 import { AuthorizeReducer } from "./AuthorizeReducer";
-import { usersAPI, followAPI, AuthAPI } from '../api/api'
+import { usersAPI, followAPI, AuthAPI, profileAPI } from '../api/api'
 import thunkMiddleware from 'redux-thunk';
 
 let reducers = combineReducers({
@@ -73,6 +73,12 @@ export const loadUserInfo = () => (dispatch) => {
         })
 
     dispatch(isFetch(false))
+}
+
+export const loadUserProfile = (match) => dispatch => {
+    profileAPI.userProfile(match).then((response) => {
+        dispatch(setUserProfile(response.data));
+    });
 }
 
 export const AddPostActionCreator = (text) => ({

@@ -21,9 +21,7 @@ let HeaderContainer = (props) => {
             })
 
         props.isFetch(false)
-    }, [])
-
-    console.log(props)
+    }, [])   
 
     if (props.auth.info === undefined) {
         return <Preloader />

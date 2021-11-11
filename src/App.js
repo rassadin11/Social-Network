@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { Provider } from 'react-redux';
-import { Route } from 'react-router';
+import { Redirect, Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import AllUsersContainer from './components/AllUsers/AllUsersContainer';
 import Dialogs from './components/Dialogs/Dialogs';
 import PersonalDialogContainer from './components/Dialogs/PersonalDialog/PersonalDialogContainer';
 import Friends from './components/Friends/Friends';
 import HeaderContainer from './components/Header/HeaderContainer';
-import LogIn from './components/LogIn/LogIn';
 import LogOut from './components/LogOut/LogOut';
 import Music from './components/Music/Music';
 import Navbar from './components/Navbar/Navbar';
@@ -24,10 +23,6 @@ function App(props) {
   
   const renderDialog = (store, id) => {
     return <PersonalDialogContainer store={store} match={id}/>
-  }
-
-  const renderProfile = (dispatch, posts) => {
-    return <Profile dispatch={dispatch} posts={posts}/>
   }
 
   return (
@@ -55,7 +50,6 @@ function App(props) {
               <Route render={() => <AllUsersContainer/>} path='/users' />
               <Route render={() => <Friends friends={props.state.friends} />} path='/friends' />
               <Route component={Settings} path='/settings' />
-              <Route component={LogIn} path='/login' />
               <Route component={LogOut} path='/logout' />
             </div>
           </main>

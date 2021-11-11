@@ -28,6 +28,17 @@ export const usersAPI = {
     },
 }
 
+export const profileAPI = {
+    async userProfile(match) {
+        return axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/profile/${match}`, {
+                    withCredentials: true,
+                }
+            )
+    }
+}
+
 export const followAPI = {
     async deleteFriend(id) {
         const response = await axios
