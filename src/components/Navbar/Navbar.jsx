@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import Preloader from '../Preloader/Preloader';
 import './Navbar.scss'
 
 const Navbar = props => {
@@ -9,7 +8,7 @@ const Navbar = props => {
     <aside className="sidebar">
       <nav className="sidebar_wrapper">
         <ul className="sidebar_nav">
-          <li className="sidebar_item"><NavLink to={props.id === undefined ? `/profile/2` : `/profile/${props.id.userId}`}>Profile</NavLink></li>
+          <li className="sidebar_item"><NavLink to={props.id === undefined ? `/login` : `/profile/${props.id.userId}`}>Profile</NavLink></li>
           <li className="sidebar_item"><NavLink to="/messages">Messages</NavLink></li>
           <li className="sidebar_item"><NavLink to="/news">News</NavLink></li>
           <li className="sidebar_item"><NavLink to="/friends">Your friends</NavLink></li>

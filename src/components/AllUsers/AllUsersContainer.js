@@ -11,6 +11,9 @@ import {
   getUsersThunkCreator,
   removeFollow
 } from "../../redux/redux-store";
+import { withAuthRedirect } from "../hoc/withAuthRedirect";
+
+let AuthRedirectComponent = withAuthRedirect(AllUsers)
 
 let mapStatetoProps = (state) => {
   return {
@@ -37,6 +40,6 @@ const AllUsersContainer = connect(
     getUsersThunkCreator,
     removeFollow
   }
-)(AllUsers);
+)(AuthRedirectComponent);
 
 export default AllUsersContainer;

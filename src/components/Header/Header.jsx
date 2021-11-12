@@ -17,7 +17,7 @@ const Header = (props) => {
                 {props.resultCode === 0 ? <div className="user__info">
                     <p className="info-user__login">{props.login}</p>
                     <p className="info-user__email">{props.email}</p>
-                </div> : 'U are not registered'}
+                </div> : <p className="info-user__login">U are not registered</p>}
                 <nav className="header__menu">
                     <div className={props.burger ? "icon-menu active" : "icon-menu"} onClick={() => props.setBurger(!props.burger)}>
                         <span></span>

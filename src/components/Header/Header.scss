@@ -26,6 +26,7 @@ header {
   margin-left: 20px;
   object-fit: cover;
   border-radius: 50%;
+  margin-right: 15px;
 }
 
 .icon-menu {
@@ -131,4 +132,8 @@ header {
       text-decoration: none;
     }
   }
+}
+
+.info-user__login, .info-user__email {
+  color: #c9c9c9;
 }

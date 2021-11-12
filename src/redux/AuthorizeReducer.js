@@ -1,7 +1,7 @@
 let initialState = {
     info: undefined,
     isFetching: false,
-    isAuth: undefined,
+    isAuth: false,
     userDescription: undefined,
     resultCode: 0
 }
@@ -13,7 +13,7 @@ export const AuthorizeReducer = (state = initialState, action) => {
                 ...state,
                 info: action.info,
                 resultCode: action.resultCode,
-                isAuth: true,
+                isAuth: action.resultCode ? false : true
             }
         case "FETCH":
             return {
@@ -23,8 +23,7 @@ export const AuthorizeReducer = (state = initialState, action) => {
         case "USER_DESCRIPTION":
             return {
                 ...state,
-                userDescription: action.userDescription,
-                isAuth: action.userDescription ? true : false
+                userDescription: action.userDescription
             }
         default:
             return state

@@ -11,7 +11,11 @@ export const AuthAPI = {
     },
 
     async myProfile(response) {
-        return await axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${response.info.id}`)
+        try {
+            return await axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${response.info.id}`)
+        } catch {
+            return 'error'
+        }
     }
 }
 

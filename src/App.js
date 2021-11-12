@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Provider } from 'react-redux';
-import { Redirect, Route } from 'react-router';
+import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import AllUsersContainer from './components/AllUsers/AllUsersContainer';
 import Dialogs from './components/Dialogs/Dialogs';
@@ -11,7 +11,6 @@ import LogOut from './components/LogOut/LogOut';
 import Music from './components/Music/Music';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
-import Profile from './components/Profile/Profile';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import mouseMovement from './Parallax';

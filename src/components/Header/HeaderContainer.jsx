@@ -1,27 +1,14 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import Header from "./Header";
-import { setData, isFetch, userDescription } from '../../redux/redux-store'
+import { setData, isFetch, userDescription, loadUserInfo } from '../../redux/redux-store'
 import Preloader from "../Preloader/Preloader";
-import { AuthAPI } from "../../api/api";
 
 let HeaderContainer = (props) => {
 
     useEffect(async () => {
-        props.isFetch(true)
-
-        AuthAPI.authMe()
-            .then(response => {
-                return props.setData(response.data, response.resultCode)
-            })
-            .then((data) => {
-                AuthAPI.myProfile(data).then(response => {
-                    props.userDescription(response.data)
-                })
-            })
-
-        props.isFetch(false)
-    }, [])   
+        props.loadUserInfo()
+    }, [])
 
     if (props.auth.info === undefined) {
         return <Preloader />
@@ -38,4 +25,4 @@ let mapStateToProps = (state, props) => ({
     auth: state.auth,
 })
 
-export default connect(mapStateToProps, { setData, isFetch, userDescription })(HeaderContainer)
+export default connect(mapStateToProps, { setData, isFetch, userDescription, loadUserInfo })(HeaderContainer)

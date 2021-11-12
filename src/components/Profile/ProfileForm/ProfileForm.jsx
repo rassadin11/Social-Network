@@ -20,4 +20,4 @@ const ProfileForm = (props) => {
     )
 };
 
-export default ProfileForm;
+export default ProfileForm

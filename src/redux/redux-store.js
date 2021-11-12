@@ -67,9 +67,11 @@ export const loadUserInfo = () => (dispatch) => {
             return dispatch(setData(response.data, response.resultCode))
         })
         .then((data) => {
-            AuthAPI.myProfile(data).then(response => {
-                dispatch(userDescription(response.data))
-            })
+            if (data.resultCode === 0) {
+                AuthAPI.myProfile(data).then(response => {
+                    return dispatch(userDescription(response.data))
+                })
+            }
         })
 
     dispatch(isFetch(false))
