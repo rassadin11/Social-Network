@@ -28,7 +28,8 @@ const Profile = (props) => {
                 profile={props.profile}
                 showLink={showLink}
                 setShowLinks={setShowLinks}
-                
+                status={props.status}
+                changeUserStatus={props.changeUserStatus}
             />
             <div>
                 <div className={showLink ? cl.links + "active" : cl.links}>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { loadUserProfile, setUserProfile } from "../../redux/redux-store";
+import { loadUserProfile, loadUserStatus, setUserProfile, changeUserStatus } from "../../redux/redux-store";
 import Preloader from "../Preloader/Preloader";
 import { withAuthRedirect } from '../hoc/withAuthRedirect'
 import { compose } from "redux";
@@ -13,6 +13,7 @@ let ProfileContainer = (props) => {
         }
 
         props.loadUserProfile(props.match)
+        props.loadUserStatus(props.match)
     }, [props.match]);
 
     return <Profile {...props} />;
@@ -28,6 +29,7 @@ AuthRedirectComponent = connect(mapStateToPropsForRedirect)(AuthRedirectComponen
 let mapStateToProps = (state, props) => ({
     profile: state.users.profile,
     match: props.match,
+    status: state.auth.status
 });
 
-export default compose(connect(mapStateToProps, { setUserProfile, loadUserProfile }))(ProfileContainer)
+export default compose(connect(mapStateToProps, { setUserProfile, loadUserProfile, loadUserStatus, changeUserStatus }))(ProfileContainer)

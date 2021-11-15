@@ -7,6 +7,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import PersonalDialogContainer from './components/Dialogs/PersonalDialog/PersonalDialogContainer';
 import Friends from './components/Friends/Friends';
 import HeaderContainer from './components/Header/HeaderContainer';
+import LogIn from './components/LogIn/LogIn';
 import LogOut from './components/LogOut/LogOut';
 import Music from './components/Music/Music';
 import Navbar from './components/Navbar/Navbar';
@@ -36,7 +37,7 @@ function App(props) {
           <main className="main_content container">
             <Navbar />
             <div className="main_content-wrapper">
-              <Route exact render={obj => {
+              <Route exact render={() => {
                 return <ProfileContainer match={props.state.auth.userDescription}/>
               }} path='/profile/' />
               <Route render={obj => {
@@ -49,6 +50,7 @@ function App(props) {
               <Route render={() => <AllUsersContainer/>} path='/users' />
               <Route render={() => <Friends friends={props.state.friends} />} path='/friends' />
               <Route component={Settings} path='/settings' />
+              <Route component={LogIn} path='/login' />
               <Route component={LogOut} path='/logout' />
             </div>
           </main>

@@ -6,16 +6,38 @@ import { AllUsersReducer } from "./AllUsersReducer";
 import { AuthorizeReducer } from "./AuthorizeReducer";
 import { usersAPI, followAPI, AuthAPI, profileAPI } from '../api/api'
 import thunkMiddleware from 'redux-thunk';
+import {reducer as formReducer} from 'redux-form';
 
 let reducers = combineReducers({
     posts: PostsReducer,
     dialogs: DialogsReducer,
     friends: FriendsReducer,
     users: AllUsersReducer,
-    auth: AuthorizeReducer
+    auth: AuthorizeReducer,
+    form: formReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+
+export const authLogin = (formData) => dispatch => {
+    AuthAPI.AuthLogin({
+        email: formData.login,
+        password: formData.password,
+        rememberMe: formData.rememberMe,
+        captcha: true
+    }).then(response => {
+        console.log(response)
+        if (response.data.resultCode === 0) {
+            dispatch(changeAuthAfterLogin())
+        }
+    })
+}
+
+export const changeAuthAfterLogin = () => {
+    return {
+        type: "SUCCESS_AUNTEFICATION"
+    }
+}
 
 export const getUsersThunkCreator = (activePage, pageSize, totalUsersCount) => (dispatch) => {
     dispatch(isFetch(true));
@@ -81,6 +103,29 @@ export const loadUserProfile = (match) => dispatch => {
     profileAPI.userProfile(match).then((response) => {
         dispatch(setUserProfile(response.data));
     });
+}
+
+export const loadUserStatus = (match) => dispatch => {
+    profileAPI.userStatus(+match).then(response => {
+        if (response.status === 200) {
+            return dispatch(changeAuthStatus(response.data))
+        }
+    })
+}
+
+export const changeUserStatus = (body) => dispatch => {
+    profileAPI.changeStatus(body).then((data) => {
+        if (data.resultCode === 0) {
+            return dispatch(changeAuthStatus(body))
+        }
+    })
+}
+
+export const changeAuthStatus = (status) => {
+    return {
+        type: "USER_STATUS",
+        status: status
+    }
 }
 
 export const AddPostActionCreator = (text) => ({

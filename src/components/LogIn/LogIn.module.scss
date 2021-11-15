@@ -1,0 +1,45 @@
+.title {
+    color: #c9c9c9;
+}
+
+.form {
+    color: #c9c9c9;
+
+    & > *:not([type="checkbox"]) {
+        display: block;
+    }
+
+    .checkbox {
+        margin-right: 10px;
+    }
+}
+
+.login::placeholder, .password::placeholder {
+    color: #c9c9c9;
+}
+
+.login, .password {
+    background-color: transparent;
+    padding: 5px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    margin: 10px 0;
+    width: max(50%, 300px);
+}
+
+.btn {
+    margin-top: 10px;
+    background-color: transparent;
+    padding: 5px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #c9c9c9;
+    min-width: 150px;
+    transition: all 0.3s ease-out 0s;
+    cursor: pointer;
+
+    &:hover {
+        background: #fff;
+        color: #000;
+    }
+}

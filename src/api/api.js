@@ -16,6 +16,15 @@ export const AuthAPI = {
         } catch {
             return 'error'
         }
+    },
+
+    async AuthLogin(data) {
+        return await axios
+            .post("https://social-network.samuraijs.com/api/1.0/auth/login", 
+            data,
+            {
+                withCredentials: true
+            })
     }
 }
 
@@ -29,7 +38,7 @@ export const usersAPI = {
                 }
             );
         return response.data;
-    },
+    }
 }
 
 export const profileAPI = {
@@ -37,9 +46,28 @@ export const profileAPI = {
         return axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/profile/${match}`, {
-                    withCredentials: true,
-                }
-            )
+                withCredentials: true,
+            })
+    },
+
+    async userStatus(match) {
+        return axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/profile/status/${match}`, {
+                withCredentials: true,
+            })
+    },
+
+    async changeStatus(status) {
+        return axios
+            .put(`https://social-network.samuraijs.com/api/1.0/profile/status`, { status: status }, 
+            {
+                withCredentials: true,
+                headers: {
+                    "API-KEY": headers,
+                },
+            })
+            .then(response => response.data)
     }
 }
 

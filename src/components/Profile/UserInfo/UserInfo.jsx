@@ -12,6 +12,18 @@ const UserInfo = (props) => {
     })
 
     let [toggleModalWindow, setToggleModalWindow] = useState(false)
+    let [statusValue, setStatusValue] = useState('')
+
+    let sendNewStatus = (e) => {
+        console.log(props.status)
+        e.stopPropagation()
+        if (statusValue.length < 300) {
+            setToggleModalWindow(!toggleModalWindow)
+            props.changeUserStatus(statusValue)
+        } else {
+            return alert(`Your status has more than 300 symbols. Delete ${statusValue.length - 300} symbol(s)`)
+        }
+    }
 
     return (
         <div className={ classes.wrapper }>
@@ -29,7 +41,7 @@ const UserInfo = (props) => {
             <div className={classes.userInformation}>
                 <div className={classes.personalInfo}>
                     <p className={classes.userName}>{props.profile.fullName}</p>
-                    <p>Status: {props.status}</p>
+                    <p>Status: {!toggleModalWindow && <span>{props.status}</span>}</p>
                     <p className={classes.userDescription}>
                         Job: &nbsp;
                         {props.profile.lookingForAJob
@@ -39,12 +51,12 @@ const UserInfo = (props) => {
                     <button onClick={() => setToggleModalWindow(!toggleModalWindow)}>Change status</button>
                 </div>
                 {toggleModalWindow && 
-                <div className={ classes.modalWindow }>
-                    <p className={ classes.modalTitle }>
+                <div className={ classes.modalWindow } onClick={e => setToggleModalWindow(!toggleModalWindow)}>
+                    <p className={ classes.modalTitle } onClick={e => e.stopPropagation()}>
                         Your status
                     </p>
-                    <input type="text" placeholder="Write new status here" className={ classes.inputField } />
-                    <button className={ classes.modalButton } onClick={() => setToggleModalWindow(!toggleModalWindow)}>
+                    <input type="text" placeholder="Write new status here" value={statusValue} onChange={(e) => setStatusValue(e.target.value)} onClick={e => e.stopPropagation()} className={ classes.inputField } />
+                    <button className={ classes.modalButton } onClick={(e) => sendNewStatus(e)}>
                         Apply changes
                     </button>
                 </div>}
